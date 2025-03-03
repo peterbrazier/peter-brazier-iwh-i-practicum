@@ -6,10 +6,10 @@ html
         link(rel="stylesheet", href="/css/style.css")
     body
         header
-            h1 Create or Update Movie
-            a(href="/") Home
+            h1 Add a Movie
+            a(href="/") Return to the homepage
         .form-wrapper 
-            form(action="/updates" method="post")
+            form(action="/update" method="post")
                 label(for="name") Name:
                 input(type="text" name="name" id="name" required)
                 br
