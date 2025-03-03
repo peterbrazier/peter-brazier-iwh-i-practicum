@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        title= title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        header 
+            h1 Movies
+            a(href="/update") Create or Update Movie
+        .cards 
+            each movie in data
+                .card 
+                    h2.card__name #{movie.properties.name} (#{movie.properties.year})
+                    p.card__meta #{movie.properties.genre} - #{movie.properties.length ? movie.properties.length : 'N/A'}
+                    p.card__synopsis #{movie.properties.synopsis}

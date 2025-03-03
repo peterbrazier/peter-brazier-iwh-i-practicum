@@ -12,25 +12,25 @@ const PRIVATE_APP_ACCESS = '';
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 app.get('/', async (req, res) => {
-    const customObjectUrl = 'https://api.hubspot.com/crm/v3/objects/custom_objects';
+    const movieUrl = 'https://api.hubspot.com/crm/v3/objects/2-139909312?properties=length,name,synopsis,genre,year';
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
     };
     try {
-        const resp = await axios.get(customObjectUrl, { headers });
+        const resp = await axios.get(movieUrl, { headers });
         const data = resp.data.results;
-        res.render('index', { title: 'Homepage | Movies', data });
+        console.log(data);
+        res.render('homepage', { title: 'Homepage | Movies', data });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Internal Server Error');
     }
 });
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
 
-app.get('/updates', (req, res) => {
-    res.render('updates', { title: 'Create or Update Movie | Movies' });
+app.get('/update', (req, res) => {
+    res.render('update', { title: 'Create or Update Movie | Movies' });
 });
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
